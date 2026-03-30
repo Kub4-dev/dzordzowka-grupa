@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dżordżówka</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at center, #1a2a33, #0a0f12);
+    color: white;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.container {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.users {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #8fdcff;
+}
+
+.desc {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.warning {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255, 0, 0, 0.12);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    font-size: 13px;
+}
+
+.dc-btn {
+    margin-top: 25px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    background: linear-gradient(90deg, #5865F2, #404eed);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    left: 15px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 255, 200, 0.1);
+    border: 1px solid rgba(0, 255, 200, 0.3);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="container">
+    <h1 id="glitchTitle">Dżordżówka</h1>
+
+    <div class="users">
+        Aktualna liczba osób: 19
+    </div>
+
+    <div class="desc">
+        Grupa została stworzona z myślą o tym, żeby było jak najwięcej ludzi do oglądania.<br><br>
+        
+        Administracja nie jest aktywna, nie rozwija grupy i nie wprowadza zmian.<br>
+        Nie banuje za przeklikanie.<br><br>
+        
+        <span id="glitchStatus">Status grupy: bez sensu.</span>
+    </div>
+
+    <div class="warning">
+        Uwaga: jeśli zobaczysz numer 579 993 303, który dodał cię do grupy,
+        opuść ją i zablokuj tę osobę.
+    </div>
+
+    <button class="dc-btn" onclick="alert('Link do Discorda tutaj')">
+        Dołącz do naszego serwera DC
+    </button>
+
+    <div class="footer">
+        Dżordżówka
+    </div>
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+    Nowa aktualizacja
+</div>
+
+<script>
+// glitch funkcja
+function glitchText(element, original) {
+    const chars = "!@#$%^&*()_+-=<>?/[]{}|";
+    let iterations = 0;
+
+    const interval = setInterval(() => {
+        element.innerText = original
+            .split("")
+            .map((letter, index) => {
+                if(index < iterations) return original[index];
+                return chars[Math.floor(Math.random() * chars.length)];
+            })
+            .join("");
+
+        if(iterations >= original.length){
+            clearInterval(interval);
+        }
+
+        iterations += 1/2;
+    }, 30);
+}
+
+// uruchamianie co kilka sekund
+setInterval(() => {
+    glitchText(document.getElementById("glitchTitle"), "Dżordżówka");
+    glitchText(document.getElementById("glitchStatus"), "Status grupy: bez sensu.");
+}, 3000);
+
+// popup
+setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+}, 4000);
+</script>
+
+</body>
+</html>
