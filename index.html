@@ -1,42 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glassmorphism Design</title>
-    <style>
-        body {
-            background: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .glass {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        h1 {
-            color: #fff;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dżordżówka</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #10181d, #1c2b33);
+    color: white;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.container {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.users {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #9edfff;
+}
+
+.desc {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.warning {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255, 60, 60, 0.1);
+    border: 1px solid rgba(255, 60, 60, 0.3);
+    font-size: 13px;
+}
+
+.dc-btn {
+    margin-top: 25px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    background: linear-gradient(90deg, #5865F2, #404eed);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dc-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(88,101,242,0.5);
+}
+
+/* BLOKADA */
+.blocked {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.2);
+    font-size: 13px;
+    opacity: 0.4;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* popup */
+.popup {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 200, 255, 0.1);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.footer {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+</style>
 </head>
+
 <body>
-    <div class="glass">
-        <h1>Welcome to the Glassmorphism World!</h1>
+
+<div class="wrapper">
+
+<div class="container">
+    <h1>Dżordżówka</h1>
+
+    <div class="users">
+        Aktualna liczba osób: 19
     </div>
+
+    <div class="desc">
+        Grupa została stworzona z myślą o tym, żeby było jak najwięcej ludzi do oglądania.<br><br>
+        
+        Administracja nie jest aktywna, nie rozwija grupy i nie wprowadza zmian.<br>
+        Nie banuje za przeklikanie.<br><br>
+        
+        Status grupy: bez sensu.
+    </div>
+
+    <div class="warning">
+        Uwaga: jeśli zobaczysz numer 579 993 303, który dodał cię do grupy,
+        opuść ją i zablokuj tę osobę.
+    </div>
+
+    <button class="dc-btn" onclick="alert('Link do Discorda tutaj')">
+        Dołącz do naszego serwera DC
+    </button>
+
+    <!-- BLOKADA -->
+    <div class="blocked">
+        Nowa lepsza grupa nadchodzi (blokada)
+    </div>
+
+    <div class="footer">
+        Dżordżówka
+    </div>
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+    Świąteczna aktualizacja nadchodzi
+</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+}, 5000);
+</script>
+
 </body>
 </html>
