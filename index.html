@@ -13,7 +13,6 @@ body {
     color: white;
 }
 
-/* CENTROWANIE */
 .wrapper {
     min-height: 100vh;
     display: flex;
@@ -22,7 +21,6 @@ body {
     padding: 15px;
 }
 
-/* GŁÓWNE OKNO – GLASS WINDOWS 11 */
 .container {
     backdrop-filter: blur(35px) saturate(180%);
     -webkit-backdrop-filter: blur(35px) saturate(180%);
@@ -50,21 +48,18 @@ h1 {
     text-shadow: 0 0 12px #00e1ff;
 }
 
-/* LICZNIK */
 .users {
     font-size: 17px;
     margin-bottom: 15px;
     color: #9bddff;
 }
 
-/* OPIS */
 .desc {
     font-size: 14px;
     line-height: 1.6;
     opacity: 0.9;
 }
 
-/* OSTRZEŻENIE */
 .warning {
     margin-top: 20px;
     padding: 14px;
@@ -75,40 +70,34 @@ h1 {
     box-shadow: 0 0 15px rgba(255,60,60,0.25);
 }
 
-/* PRZYCISK DC */
-.dc-btn {
+/* JEDEN PRZYCISK JK-LINKS */
+.jk-btn {
     margin-top: 25px;
     padding: 14px;
     border-radius: 14px;
     border: none;
     width: 100%;
-    background: linear-gradient(90deg, #5f6df7, #3f4ae0);
+    background: linear-gradient(90deg, #00d0ff, #008cff);
     color: white;
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0 0 20px rgba(88,101,242,0.45);
+    box-shadow: 0 0 20px rgba(0,200,255,0.45);
+    font-size: 17px;
 }
 
-.dc-btn:hover {
+.jk-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(88,101,242,0.8);
+    box-shadow: 0 0 30px rgba(0,200,255,0.8);
 }
 
-/* BLOKADA */
-.blocked {
-    margin-top: 20px;
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.07);
-    border: 1px dashed rgba(255,255,255,0.3);
-    font-size: 13px;
-    opacity: 0.55;
-    pointer-events: none;
-    user-select: none;
+.footer {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.5;
 }
 
-/* POPUP – GLASS + NEON */
+/* POPUP */
 .popup {
     position: fixed;
     top: 15px;
@@ -129,12 +118,6 @@ h1 {
 @keyframes slideDown {
     from { transform: translateY(-40px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
-}
-
-.footer {
-    margin-top: 10px;
-    font-size: 12px;
-    opacity: 0.5;
 }
 </style>
 </head>
@@ -164,13 +147,10 @@ h1 {
         opuść ją i zablokuj tę osobę.
     </div>
 
-    <button class="dc-btn" onclick="alert('Link do Discorda tutaj')">
-        Dołącz do naszego serwera DC
+    <!-- JEDEN PRZYCISK JK-LINKS -->
+    <button class="jk-btn" onclick="window.location.href='https://kub4-dev.github.io/JK-Links/'">
+        Wejdź na JK‑Links
     </button>
-
-    <div class="blocked">
-        Nowa lepsza grupa nadchodzi (blokada)
-    </div>
 
     <div class="footer">
         Dżordżówka
@@ -179,7 +159,6 @@ h1 {
 
 </div>
 
-<!-- NOWY POPUP -->
 <div class="popup" id="popup">
     Nowa aktualizacja została zastosowana pomyślnie
 </div>
