@@ -3,170 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dżordżówka</title>
+<title>GUI Login</title>
 
 <style>
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #0c1418, #05080a 70%);
-    color: white;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-.wrapper {
-    min-height: 100vh;
+body {
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 15px;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    overflow: hidden;
 }
 
-.container {
-    backdrop-filter: blur(35px) saturate(180%);
-    -webkit-backdrop-filter: blur(35px) saturate(180%);
-    background: rgba(255, 255, 255, 0.10);
-    border-radius: 28px;
-    padding: 32px;
-    width: 100%;
-    max-width: 460px;
-    border: 1px solid rgba(255,255,255,0.25);
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+body::before {
+    background: #ff6ec4;
+    top: 10%;
+    left: 10%;
+}
+
+body::after {
+    background: #00f2fe;
+    bottom: 10%;
+    right: 10%;
+}
+
+.box {
+    width: 340px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
     text-align: center;
-    box-shadow:
-        0 0 60px rgba(0,0,0,0.7),
-        inset 0 0 25px rgba(255,255,255,0.08);
-    animation: fadeIn 0.8s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px);}
-    to { opacity: 1; transform: translateY(0);}
-}
-
-h1 {
-    margin-bottom: 10px;
-    font-size: 30px;
-    text-shadow: 0 0 12px #00e1ff;
-}
-
-.users {
-    font-size: 17px;
-    margin-bottom: 15px;
-    color: #9bddff;
-}
-
-.desc {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.9;
+    position: relative;
 }
 
 .warning {
-    margin-top: 20px;
-    padding: 14px;
-    border-radius: 14px;
-    background: rgba(255, 60, 60, 0.15);
-    border: 1px solid rgba(255, 60, 60, 0.4);
-    font-size: 13px;
-    box-shadow: 0 0 15px rgba(255,60,60,0.25);
-}
-
-/* JEDEN PRZYCISK JK-LINKS */
-.jk-btn {
-    margin-top: 25px;
-    padding: 14px;
-    border-radius: 14px;
-    border: none;
-    width: 100%;
-    background: linear-gradient(90deg, #00d0ff, #008cff);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 20px rgba(0,200,255,0.45);
-    font-size: 17px;
-}
-
-.jk-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0,200,255,0.8);
-}
-
-.footer {
-    margin-top: 10px;
     font-size: 12px;
-    opacity: 0.5;
+    margin-bottom: 10px;
+    color: #ffe66d;
 }
 
-/* POPUP */
-.popup {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    background: rgba(0, 200, 255, 0.15);
-    border: 1px solid rgba(0, 200, 255, 0.45);
-    padding: 16px;
-    border-radius: 16px;
-    text-align: center;
-    animation: slideDown 0.6s ease;
-    box-shadow: 0 0 25px rgba(0,200,255,0.5);
-    font-size: 15px;
+.form {
+    display: none;
 }
 
-@keyframes slideDown {
-    from { transform: translateY(-40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.form.active {
+    display: block;
+    animation: fade 0.3s ease;
+}
+
+@keyframes fade {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.input-box {
+    margin: 10px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+.switch {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch a {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* STOPKA */
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.8;
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-
-<div class="container">
-    <h1>Dżordżówka</h1>
-
-    <div class="users">
-        Aktualna liczba osób: 19
-    </div>
-
-    <div class="desc">
-        Grupa została stworzona z myślą o tym, żeby było jak najwięcej ludzi do oglądania.<br><br>
-        
-        Administracja nie jest aktywna, nie rozwija grupy i nie wprowadza zmian.<br>
-        Nie banuje za przeklikanie.<br><br>
-        
-        Status grupy: bez sensu.
-    </div>
+<div class="box">
 
     <div class="warning">
-        Uwaga: jeśli zobaczysz numer 579 993 303, który dodał cię do grupy,
-        opuść ją i zablokuj tę osobę.
+        ⚠ To tylko GUI test — brak prawdziwego logowania
     </div>
 
-    <!-- JEDEN PRZYCISK JK-LINKS -->
-    <button class="jk-btn" onclick="window.location.href='https://kub4-dev.github.io/JK-Links/'">
-        Wejdź na JK‑Links
-    </button>
+    <!-- LOGIN -->
+    <div id="login" class="form active">
+        <h2>Logowanie</h2>
 
+        <div class="input-box">
+            <input type="text" placeholder="Login">
+        </div>
+
+        <div class="input-box">
+            <input type="password" placeholder="Hasło">
+        </div>
+
+        <button>Zaloguj się</button>
+
+        <div class="switch">
+            Nie masz konta? <a onclick="showRegister()">Stwórz jedno</a>
+        </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="register" class="form">
+        <h2>Rejestracja</h2>
+
+        <div class="input-box">
+            <input type="text" placeholder="Login">
+        </div>
+
+        <div class="input-box">
+            <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-box">
+            <input type="password" placeholder="Hasło">
+        </div>
+
+        <button>Załóż konto</button>
+
+        <div class="switch">
+            Masz konto? <a onclick="showLogin()">Zaloguj się</a>
+        </div>
+    </div>
+
+    <!-- STOPKA -->
     <div class="footer">
-        Dżordżówka
+        JK-Softwares GUI
     </div>
-</div>
 
-</div>
-
-<div class="popup" id="popup">
-    Nowa aktualizacja została zastosowana pomyślnie
 </div>
 
 <script>
-setTimeout(() => {
-    document.getElementById("popup").style.display = "none";
-}, 5000);
+function showRegister() {
+    document.getElementById("login").classList.remove("active");
+    document.getElementById("register").classList.add("active");
+
+    document.getElementById("login").querySelectorAll("input").forEach(i => i.value = "");
+}
+
+function showLogin() {
+    document.getElementById("register").classList.remove("active");
+    document.getElementById("login").classList.add("active");
+
+    document.getElementById("register").querySelectorAll("input").forEach(i => i.value = "");
+}
 </script>
 
 </body>
